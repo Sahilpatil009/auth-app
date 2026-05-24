@@ -7,12 +7,15 @@ import { Axios } from "axios";
 
 
 export default function SignupPage() {
+    const router = useRouter();
+
     const [user, setUser] = React.useState({
         email: "",
         password: "",
         username: "",
     }) 
 
+    const [buttonDisabled, setButttonDisabled] = React.useState(false)
     const onsignup = async () => {
 
     }
