@@ -6,7 +6,10 @@ export function proxy(request: NextRequest) {
 
     const isPublicPath =
         path === '/login' ||
-        path === '/signup';
+        path === '/signup' ||
+        path === '/verifyemail' ||
+        path === '/forgotpassword' ||
+        path === '/resetpassword';
 
     const token = request.cookies.get('token')?.value || '';
 
@@ -31,5 +34,8 @@ export const config = {
         '/profile',
         '/login',
         '/signup',
+        '/verifyemail',
+        '/forgotpassword',
+        '/resetpassword'
     ],
 };

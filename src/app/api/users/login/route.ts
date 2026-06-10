@@ -2,7 +2,6 @@ import { connect } from "@/src/dbConfig/dbConfig";
 import User from "@/src/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-// @ts-expect-error jsonwebtoken does not have TypeScript definitions
 import jwt from "jsonwebtoken";
 
 export async function POST(request: NextRequest) {
@@ -40,7 +39,7 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const tokenSecret = process.env.TOKEN_SECRET || process.env.TOKEN_SECRECT;
+        const tokenSecret = process.env.TOKEN_SECRET || process.env.TOKEN_SECRET;
 
         if (!tokenSecret) {
             return NextResponse.json(
