@@ -1,67 +1,117 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, Shield, Key, Mail, Lock } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          style={{ width: "auto", height: "auto" }}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-slate-950 text-slate-100 font-sans">
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-950 to-slate-950" />
+      <div className="absolute -left-1/4 -top-1/4 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[120px] pointer-events-none" />
+      <div className="absolute -right-1/4 -bottom-1/4 h-[500px] w-[500px] rounded-full bg-emerald-500/5 blur-[120px] pointer-events-none" />
+
+      <main className="relative z-10 flex w-full max-w-4xl flex-col items-center px-6 text-center">
+        {/* Animated Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-400 backdrop-blur-sm"
+        >
+          <Shield className="h-4 w-4" />
+          <span>Next.js 16 Secure Auth System</span>
+        </motion.div>
+
+        {/* Hero Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-4xl font-extrabold tracking-tight sm:text-6xl bg-gradient-to-b from-white via-slate-100 to-slate-400 bg-clip-text text-transparent"
+        >
+          Authentication, <br className="hidden sm:inline" />
+          Simplified & Secured
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-6 max-w-2xl text-lg text-slate-400"
+        >
+          A production-ready authentication wrapper built with Next.js, 
+          Tailwind CSS, Shadcn/UI, and MongoDB. Secure, robust, and clean.
+        </motion.p>
+
+        {/* Feature grid - sleek & minimal */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3 w-full max-w-3xl"
+        >
+          <div className="flex flex-col items-center p-5 rounded-2xl border border-slate-800/80 bg-slate-900/50 backdrop-blur-sm">
+            <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 mb-3">
+              <Mail className="h-5 w-5" />
+            </div>
+            <h3 className="font-semibold text-slate-200">Email Verification</h3>
+            <p className="mt-1 text-sm text-slate-400 text-center">Auto-verifies users via email confirmation tokens.</p>
+          </div>
+
+          <div className="flex flex-col items-center p-5 rounded-2xl border border-slate-800/80 bg-slate-900/50 backdrop-blur-sm">
+            <div className="p-3 rounded-lg bg-emerald-500/10 text-emerald-400 mb-3">
+              <Lock className="h-5 w-5" />
+            </div>
+            <h3 className="font-semibold text-slate-200">Session Security</h3>
+            <p className="mt-1 text-sm text-slate-400 text-center">HTTP-only cookie-based tokens utilizing JWT.</p>
+          </div>
+
+          <div className="flex flex-col items-center p-5 rounded-2xl border border-slate-800/80 bg-slate-900/50 backdrop-blur-sm">
+            <div className="p-3 rounded-lg bg-violet-500/10 text-violet-400 mb-3">
+              <Key className="h-5 w-5" />
+            </div>
+            <h3 className="font-semibold text-slate-200">Password Recovery</h3>
+            <p className="mt-1 text-sm text-slate-400 text-center">Self-service password reset via secure recovery links.</p>
+          </div>
+        </motion.div>
+
+        {/* Call-to-actions */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Link
+            href="/login"
+            className={buttonVariants({
+              size: "lg",
+              className: "bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-lg shadow-blue-500/20 px-8 transition duration-200"
+            })}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-              style={{ width: "auto", height: "auto" }}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Sign In <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+          <Link
+            href="/signup"
+            className={buttonVariants({
+              variant: "outline",
+              size: "lg",
+              className: "border-slate-800 hover:bg-slate-900 hover:text-white rounded-xl px-8 transition duration-200"
+            })}
           >
-            Documentation
-          </a>
-        </div>
+            Create Account
+          </Link>
+        </motion.div>
       </main>
+
+      {/* Footer info */}
+      <div className="absolute bottom-6 text-xs text-slate-600 pointer-events-none">
+        Secure Handshake &copy; {new Date().getFullYear()}
+      </div>
     </div>
   );
 }
